@@ -155,7 +155,8 @@ window.addEventListener("mousemove", (event) => {
 
 //GLTFLoader
 const loader = new GLTFLoader();
-loader.load("./images/NekoPunchForThree.glb", (gltf) => {
+const glbModel = await loader.loadAsync("./images/NekoPunchForThree.glb");
+loader.load(glbModel, (gltf) => {
   gltf.scene.position.set(1.5, -1, 0);
   const model = gltf.scene;
   scene.add(model);
