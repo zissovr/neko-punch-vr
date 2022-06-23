@@ -183,7 +183,7 @@ const loader = new GLTFLoader();
 // );
 
 
-const url = "NekoPunchForThree.glb";
+const url = "assets/NekoPunchForThree.glb";
 let model = null;
 loader.load(url, function (gltf) {
   gltf.scene.position.set(1.5, -1, 0);
