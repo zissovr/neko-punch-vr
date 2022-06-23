@@ -183,9 +183,9 @@ const loader = new GLTFLoader();
 // );
 
 
-const url = "NekoPunchForThree.gltf";
+const url = "NekoPunchForThree.glb";
 let model = null;
-loader.load(url, (gltf) => {
+loader.load(url, function (gltf) {
   gltf.scene.position.set(1.5, -1, 0);
   model = gltf.scene;
   scene.add(model);
@@ -195,7 +195,8 @@ loader.load(url, (gltf) => {
     renderer.render(scene, camera);
   }
   gltfAnimate();
-})
+  }
+)
 
 
 //Animation
