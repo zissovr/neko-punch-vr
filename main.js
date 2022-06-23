@@ -1,6 +1,7 @@
 import './style.css'
 import * as THREE from "three";
 import { GLTFLoader } from './GLTFLoader';
+// import modelGltf from './NekoPunchForThree.glb'
 
 
 //Canvas
@@ -183,7 +184,8 @@ const loader = new GLTFLoader();
 // );
 
 
-const url = "./dist/assets/NekoPunchForThree.glb";
+const url = "./NekoPunchForThree.glb";
+// const url = modelGltf;
 let model = null;
 loader.load(url, function (gltf) {
   gltf.scene.position.set(1.5, -1, 0);
