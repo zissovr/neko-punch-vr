@@ -167,7 +167,7 @@ const loader = new GLTFLoader();
 // }
 // gltfAnimate();
 
-const awaitModel = fetch("./images/NekoPunchForThree.glb").then(response => 
+const awaitModel = fetch("./NekoPunchForThree.glb").then(response => 
   loader.load(response.url, (gltf) => {
     gltf.scene.position.set(1.5, -1, 0);
     const model = gltf.scene;
