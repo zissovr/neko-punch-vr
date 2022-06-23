@@ -155,19 +155,35 @@ window.addEventListener("mousemove", (event) => {
 
 //GLTFLoader
 const loader = new GLTFLoader();
-const glbModel = await loader.loadAsync("./images/NekoPunchForThree.glb");
-glbModel.scene.position.set(1.5, -1, 0);
-const model = glbModel.scene;
-scene.add(model);
-function gltfAnimate() {
-  requestAnimationFrame(gltfAnimate);
-  model.rotation.y -= 0.005;
-  renderer.render(scene, camera);
-}
-gltfAnimate();
+
+// const glbModel = await loader.loadAsync("./images/NekoPunchForThree.glb");
+// glbModel.scene.position.set(1.5, -1, 0);
+// const model = glbModel.scene;
+// scene.add(model);
+// function gltfAnimate() {
+//   requestAnimationFrame(gltfAnimate);
+//   model.rotation.y -= 0.005;
+//   renderer.render(scene, camera);
+// }
+// gltfAnimate();
+
+const awaitModel = fetch("./images/NekoPunchForThree.glb").then(response => 
+  loader.load(response.url, (gltf) => {
+    gltf.scene.position.set(1.5, -1, 0);
+    const model = gltf.scene;
+    scene.add(model);
+    function gltfAnimate() {
+      requestAnimationFrame(gltfAnimate);
+      model.rotation.y -= 0.005;
+      renderer.render(scene, camera);
+    }
+    gltfAnimate();
+  })
+  );
 
 
-// loader.load("./images/NekoPunchForThree.glb", (gltf) => {
+//console.log(awaitModel);
+// loader.load(awaitModel, (gltf) => {
 //   gltf.scene.position.set(1.5, -1, 0);
 //   const model = gltf.scene;
 //   scene.add(model);
