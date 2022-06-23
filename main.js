@@ -167,7 +167,7 @@ const loader = new GLTFLoader();
 // }
 // gltfAnimate();
 
-const awaitModel = fetch("./NekoPunchForThree.gltf").then(response =>
+const awaitModel = fetch("https://firebasestorage.googleapis.com/v0/b/neko-punch-vr.appspot.com/o/NekoPunchForThree.glb?alt=media&token=5c12ef56-eb40-4a0d-a6d7-b5e97cc14482").then(response =>
   loader.load(response.url, (gltf) => {
     gltf.scene.position.set(1.5, -1, 0);
     const model = gltf.scene;
