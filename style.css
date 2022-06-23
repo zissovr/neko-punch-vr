@@ -15,6 +15,7 @@ html {
 body {
   overflow: hidden;
   backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
 }
 
 .webgl {
