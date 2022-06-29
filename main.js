@@ -183,13 +183,21 @@ const loader = new GLTFLoader();
 //   })
 // );
 
-
-const url = "./NekoPunchForThree.glb";
+let clips;
+let mixer;
+// const url = "./NekoPunchForThree.glb";
+const url = "./PunchComboAnimation1.glb";
 // const url = modelGltf;
 let model = null;
 loader.load(url, function (gltf) {
   gltf.scene.position.set(1.5, -1, 0);
   model = gltf.scene;
+  mixer = new THREE.AnimationMixer(model);
+  clips = gltf.animations;
+  const clip = THREE.AnimationClip.findByName(clips, "PunchCombo1");
+  const action = mixer.clipAction(clip);
+  action.play();
+
   scene.add(model);
   function gltfAnimate() {
     requestAnimationFrame(gltfAnimate);
@@ -208,6 +216,11 @@ const animate = () => {
   renderer.render(scene, camera);
 
   let getDeltaTime = clock.getDelta();
+
+  if(mixer){
+    mixer.update(getDeltaTime);
+  }
+  
 
   //Rotate mesh
   for (const mesh of meshes) {
